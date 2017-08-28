@@ -35,12 +35,7 @@ dependencies {
 }
 
 adeum{   // configure the AppDynamics plugin
-    dependencyInjection {
-        enabled = false // disables injection
-        }
-        // Section 1
-        //add this information to allow the upload of ProGuard mapping files.  If you are using the EUM Cloud (SaaS), this automatically uploads your files with each build 
-     
+
     account {
 		name 'IBMCorporation-a0Q3400000DuFD0EAN'
 		licenseKey '6b7d4c7a-7937-480d-9a1c-1abd78d992a7'
