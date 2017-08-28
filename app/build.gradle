@@ -1,5 +1,18 @@
 apply plugin: 'com.android.application'
-apply plugin: 'adeum' 
+apply plugin: 'adeum'
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.appdynamics:appdynamics-gradle-plugin:4.+'
+    }
+}
+
+repositories {
+    jcenter()
+}
 
 android {
     compileSdkVersion 23

@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.appdynamics.eumagent.runtime.AgentConfiguration;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -40,7 +41,8 @@ import com.microsoft.windowsazure.mobileservices.table.sync.localstore.MobileSer
 import com.microsoft.windowsazure.mobileservices.table.sync.localstore.SQLiteLocalStore;
 import com.microsoft.windowsazure.mobileservices.table.sync.synchandler.SimpleSyncHandler;
 import com.squareup.okhttp.OkHttpClient;
-import com.appdynamics.eumagent.runtime.Instrumentation; 
+import com.appdynamics.eumagent.runtime.Instrumentation;
+import com.appdynamics.eumagent.runtime.AgentConfiguration;
 
 import static com.microsoft.windowsazure.mobileservices.table.query.QueryOperations.*;
 
@@ -84,7 +86,11 @@ public class ToDoActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do);
-		Instrumentation.start("AD-AAB-AAE-YTG", getApplicationContext()); 
+        // Start the AppDynamics Instrumentation
+        Instrumentation.start(AgentConfiguration.builder()
+                .withContext(getApplicationContext())
+                .withAppKey("AD-AAB-AAE-YTG")
+                .build());
         mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
 
         // Initialize the progress bar
