@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'adeum' 
+
 android {
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
@@ -33,15 +34,27 @@ dependencies {
 	compile 'com.appdynamics:appdynamics-runtime:4.+'
 }
 
-adeum { // this section added for AppDynamics
-	account {
+adeum{   // configure the AppDynamics plugin
+    dependencyInjection {
+        enabled = false // disables injection
+        }
+        // Section 1
+        //add this information to allow the upload of ProGuard mapping files.  If you are using the EUM Cloud (SaaS), this automatically uploads your files with each build 
+     
+    account {
 		name 'IBMCorporation-a0Q3400000DuFD0EAN'
 		licenseKey '6b7d4c7a-7937-480d-9a1c-1abd78d992a7'
 	}
+ 
+        //add this information if you want to modify upload behavior.
+      proguardMappingFileUpload {
+        failBuildOnUploadFailure true //should build fail if upload fails? Defaults to false
+        enabled true //enables automatic uploads.  Defaults to true
+        }
+ 
+      
+        // Section 3 - optional.  To exclude named classes from instrumentation
+      excludeClasses = ['android.support.multidex.*', 'okio.**']//Excludes all the classes in the android.support.multidex and okio packages.
 
-	proguardMappingFileUpload {
-		failBuildOnUploadFailure true //should build fail if upload fails? Defaults to false.
-
-		enabled true //enables automatic uploads. Defaults to true.
-	}
 }
+
