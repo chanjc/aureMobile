@@ -12,7 +12,7 @@ public class MyApplication extends Application {
         // Start the AppDynamics Instrumentation
         Instrumentation.start(AgentConfiguration.builder()
                 .withContext(getApplicationContext())
-                .withAppKey("AD-AAB-AAE-YTG")
+                .withAppKey("AD-AAB-AAE-YZD")
                 .build());
     }
 }

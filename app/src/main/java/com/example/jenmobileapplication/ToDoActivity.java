@@ -89,7 +89,7 @@ public class ToDoActivity extends Activity {
         // Start the AppDynamics Instrumentation
         Instrumentation.start(AgentConfiguration.builder()
                 .withContext(getApplicationContext())
-                .withAppKey("AD-AAB-AAE-YTG")
+                .withAppKey("AD-AAB-AAE-YZD")
                 .build());
         mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
 
